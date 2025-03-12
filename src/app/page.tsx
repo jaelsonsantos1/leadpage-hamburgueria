@@ -1,70 +1,74 @@
-import Head from "next/head";
+import Image from "next/image";
+
+import { Header } from "@/components/Header";
+import { BurgerCard } from "@/components/BurgerCard";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Hamburgueria Landing</title>
-        <meta name="description" content="Landing page para hamburgueria" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* HEADER / NAVBAR */}
-      {/* bg-orange-500 */}
-      <header className="text-black">
-        <div className="container mx-auto flex items-center justify-between px-4">
-            <div className="w-auto h-18 bg-orange-500 flex items-end justify-center px-10 pb-2">
-              <div className="text-xl text-white font-bold text-center">
-                {/* Logo ou Nome da Marca */}
-                Burgers.
-              </div>
-            </div>
-
-          <nav className="space-x-4 hidden md:block">
-            <a href="#" className="hover:text-gray-200 transition-colors">
-              Home
-            </a>
-            <a href="#" className="hover:text-gray-200 transition-colors">
-              Menu
-            </a>
-            <a href="#" className="hover:text-gray-200 transition-colors">
-              Sobre
-            </a>
-            <a href="#" className="hover:text-gray-200 transition-colors">
-              Contato
-            </a>
-          </nav>
-          <button className="bg-white text-orange-500 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors">
-            Peça Agora
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* HERO SECTION */}
-      <section className="bg-orange-100 py-16">
+      <section className="bg-white py-16 relative">
         <div className="container mx-auto flex flex-col md:flex-row items-center px-4">
+          {/* Left Content */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-600">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Experimente nosso novo
-              <br /> <span className="text-orange-700">Cheesy Bluster</span>
+              <br /> <span className="text-orange-500">Cheezy Bluster</span>
             </h1>
-            <p className="text-gray-700 mb-6">
-              A combinação perfeita de carne suculenta e queijo derretido. Uma
-              explosão de sabores em cada mordida!
+            <p className="text-gray-500 mb-6 text-sm">
+              A combinação perfeita de carne suculenta e queijo derretido.
             </p>
-            <button className="bg-orange-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-orange-700 transition-colors">
-              Faça seu pedido
+            <button className="bg-orange-500 text-white px-6 py-3 rounded hover:bg-orange-600 transition-colors mb-8">
+              Peça Agora
             </button>
+
+            {/* Social Media Icons */}
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-400 hover:text-orange-500">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-orange-500">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-orange-500">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </div>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center">
-            {/* Comente onde inserir a imagem do burger principal */}
-            {/* <img src="/caminho/para/sua/imagem.jpg" alt="Cheesy Bluster" /> */}
-            <div className="bg-gray-300 w-80 h-80 flex items-center justify-center rounded-md">
-              {/* Espaço reservado para a imagem do burger */}
-              <span className="text-gray-500">[Imagem do burger]</span>
+
+          {/* Right Content */}
+          <div className="w-full md:w-1/2 relative">
+            <div className="relative">
+              <Image
+                src="/assets/burger.svg"
+                alt="Cheezy Bluster"
+                width={600}
+                height={600}
+                className="object-contain"
+              />
+              <div className="absolute bottom-4 right-4 bg-orange-500 text-white px-4 py-2 rounded">
+                <span className="text-2xl font-bold">R$ 35,90</span>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Navigation Dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+          <button className="w-2 h-2 rounded-full bg-orange-500"></button>
+          <button className="w-2 h-2 rounded-full bg-gray-300"></button>
+          <button className="w-2 h-2 rounded-full bg-gray-300"></button>
+        </div>
+
+        {/* Navigation Arrows */}
+        <button className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+          <span className="text-orange-500">←</span>
+        </button>
+        <button className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+          <span className="text-orange-500">→</span>
+        </button>
       </section>
 
       {/* EXPLORE MENU SECTION */}
@@ -95,10 +99,10 @@ export default function Home() {
             </button>
           </div>
           {/* Card 2 */}
-          <div className="bg-white rounded-md shadow-md p-4">
-            {/* <img src="/caminho/para/sua/imagem2.jpg" alt="Hambúrguer 2" /> */}
+          <BurgerCard />
+          {/* <div className="bg-white rounded-md shadow-md p-4">
             <div className="bg-gray-300 w-full h-40 rounded-md mb-4 flex items-center justify-center">
-              <span className="text-gray-500">[Imagem 2]</span>
+              <img src="/assets/burger1.svg" alt="Hambúrguer 2" />
             </div>
             <h3 className="text-xl font-semibold text-orange-700 mb-2">
               Burger Duplo
@@ -109,7 +113,7 @@ export default function Home() {
             <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors">
               Pedir agora
             </button>
-          </div>
+          </div> */}
           {/* Card 3 */}
           <div className="bg-white rounded-md shadow-md p-4">
             {/* <img src="/caminho/para/sua/imagem3.jpg" alt="Hambúrguer 3" /> */}
@@ -244,7 +248,7 @@ export default function Home() {
       <footer className="bg-orange-600 text-white py-6 mt-10">
         <div className="container mx-auto text-center">
           <p className="mb-2">
-            © 2023 Hamburgueria. Todos os direitos reservados.
+            © 2025 Hamburgueria. Todos os direitos reservados.
           </p>
           <p className="text-sm">Feito com Next.js & Tailwind CSS.</p>
         </div>
