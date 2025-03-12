@@ -19,7 +19,7 @@ export const BurgerCard = () => {
           />
         </div>
 
-        <div className="w-1/2 flex flex-col justify-between">
+        <div className="w-1/2 h-2/3 flex flex-col justify-between">
           <p className="text-gray-700 mb-4">
             Descrição rápida do seu burger duplo.
           </p>
